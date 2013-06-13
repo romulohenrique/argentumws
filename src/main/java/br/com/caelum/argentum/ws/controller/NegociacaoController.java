@@ -33,7 +33,7 @@ public class NegociacaoController {
 
 		List<Negociacao> negociacoes = gerador.getNegociacoes();
 
-		 result.use(xml()).from(negociacoes).serialize();
+		result.use(xml()).from(negociacoes, "negociacoes").serialize();
 
 	}
 

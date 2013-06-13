@@ -2,33 +2,31 @@ package br.com.caelum.argentum.ws.modelo;
 
 import java.util.Calendar;
 
-
 public final class Data {
-	
+
 	private final Calendar instance;
 
 	public Data(Calendar instance) {
 		this.instance = (Calendar) instance.clone();
 		this.semHora(this.instance);
 	}
-	
+
 	private Data(Calendar instance, boolean nada) {
 		this.instance = instance;
 	}
-	
+
 	public Data() {
 		this.instance = this.hojeSemHora();
 	}
 
 	private Calendar semHora(Calendar cal) {
 		cal.set(Calendar.HOUR_OF_DAY, 0);
-	    cal.set(Calendar.MINUTE, 0);
-	    cal.set(Calendar.SECOND, 0);
-	    cal.set(Calendar.MILLISECOND, 0);
+		cal.set(Calendar.MINUTE, 0);
+		cal.set(Calendar.SECOND, 0);
+		cal.set(Calendar.MILLISECOND, 0);
 		return cal;
-}
+	}
 
-	
 	private Calendar hojeSemHora() {
 		Calendar instance = Calendar.getInstance();
 		return semHora(instance);
@@ -37,11 +35,11 @@ public final class Data {
 	public Calendar toCalendar() {
 		return (Calendar) instance.clone();
 	}
-	
+
 	public Data mesesAtras(Quantidade meses) {
 		Calendar cal = this.toCalendar();
-		cal.add(Calendar.MONTH, - meses.ordinal());
-		return new Data(cal,true);
+		cal.add(Calendar.MONTH, -meses.ordinal());
+		return new Data(cal, true);
 	}
 
 	public boolean ehAntes(Data outra) {
@@ -54,8 +52,8 @@ public final class Data {
 
 	public Data adicionDias(Quantidade dias) {
 		Calendar cal = this.toCalendar();
-		cal.add(Calendar.DAY_OF_MONTH,  dias.ordinal());
-		return new Data(cal ,true);
+		cal.add(Calendar.DAY_OF_MONTH, dias.ordinal());
+		return new Data(cal, true);
 	}
 
 	@Override
